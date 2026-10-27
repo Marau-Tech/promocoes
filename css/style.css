@@ -1,0 +1,87 @@
+:root {
+  color-scheme: dark;
+  --bg: #000;
+  --fg: #fff;
+  --soft: #d4d4d8;
+  --amber: #f5a70f;
+  --wa: #22c55e;
+  --tg: #0088cc;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+}
+main {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+/* Logo */
+.logo { position: relative; width: 128px; height: 128px; margin-bottom: 28px; }
+.logo img {
+  display: block; width: 100%; height: 100%;
+  border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 60px rgba(255, 255, 255, .12);
+}
+.dot {
+  position: absolute; right: -2px; bottom: 4px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--wa); display: grid; place-items: center;
+}
+.dot::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+
+/* Títulos */
+h1 {
+  margin: 0;
+  font-size: clamp(32px, 9vw, 38px);
+  line-height: 1.1; font-weight: 900; letter-spacing: -.01em;
+  text-transform: uppercase;
+}
+h1 span { display: block; color: var(--amber); }
+
+.stats {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 26px;
+  margin: 22px 0 14px;
+  font-size: 13px; font-weight: 900; text-transform: uppercase;
+}
+
+/* Botões */
+.btns { width: 100%; max-width: 454px; display: flex; flex-direction: column; gap: 8px; }
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 57px; padding: 12px 20px; border-radius: 999px;
+  color: #fff; text-decoration: none;
+  font-weight: 900; font-size: clamp(14px, 4vw, 17px); line-height: 1.15;
+  text-transform: uppercase;
+  animation: hop 1.8s ease-in-out infinite;
+}
+.btn svg { flex: none; width: 22px; height: 22px; fill: currentColor; }
+.wa { background: var(--wa); }
+.tg { background: var(--tg); animation-delay: .3s; }
+.btn:hover { filter: brightness(1.08); }
+.btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+@keyframes hop {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-7px); }
+  45% { transform: translateY(0); }
+  52% { transform: translateY(-3px); }
+}
+
+.desc { margin: 24px 0 0; max-width: 400px; font-size: 18px; line-height: 1.55; color: var(--soft); }
+
+@media (prefers-reduced-motion: reduce) { .btn { animation: none; } }
